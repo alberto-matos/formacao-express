@@ -6,11 +6,13 @@ import nestedRoutes from './routes/nestedRoute'
 import status from './routes/status'
 import routeParans from './routes/routeParams'
 import queryParans from './routes/queryParams'
+import methods from './routes/methods'
 
 const app = express()
 
 // middleware
-app.use((req, res, next)=>{
+app.use(express.urlencoded({ extended: true }))
+app.use((req, res, next) => {
   console.log(`Data: ${Date.now().toLocaleString('pt-BR')}`)
   // console.log(`Data: ${Intl.DateTimeFormat('pt-BR', {
   //   dateStyle: 'short',
@@ -26,6 +28,7 @@ app.use('/products', nestedRoutes)
 app.use('/status', status)
 app.use('/routeParams', routeParans)
 app.use('/queryParams', queryParans)
+app.use('/methods', methods)
 
 app.listen(env.port, () => {
   console.log(`Listening on port ${env.port}`)

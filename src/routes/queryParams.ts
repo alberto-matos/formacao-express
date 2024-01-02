@@ -8,6 +8,7 @@ route.get("/", (req, res)=>{
   const filter = req.query.filter?.toString().toLowerCase() || null
   
   console.log(req.query)
+  
   colors = colors.filter(color => {
     return filter ? color.includes(filter) : true
   })
